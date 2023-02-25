@@ -230,12 +230,12 @@ span {
         gap: 0;
     }
     #card {
-        width: 100%;
+        width: 98%;
         height: 500px;
     }
     #resultboard {
         margin-top: 70px;
-        width: 100%;
+        width: 98%;
         height: 300px;
     }
     #resultboard > button {
@@ -248,7 +248,7 @@ span {
         height: 500px;
     }
     nav {
-        width: 100%;
+        width: 98%;
     }
     nav > p {
         color: white;
