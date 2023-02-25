@@ -321,7 +321,9 @@ function RenderResults() {
 /* The NextGame() function slowly removes the resultboard with the help of the removeFadeOut() function, 
 then decides which question to render next based on which the previous one was. */
 function NextGame() {
-    document.getElementById("nxtbutton").disabled = true;
+    var NextGameBtn = document.getElementById("nxtbutton");
+    NextGameBtn.disabled = true;
+
     CorrectAnswer = false;
     removeFadeOut(document.getElementById("resultboard"), 1000);
     setTimeout(function(){
