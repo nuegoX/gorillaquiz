@@ -312,6 +312,7 @@ function RenderResults() {
     p2guess = false;
 
     let NextGameBtn = document.createElement("button");
+    NextGameBtn.id = "nxtbutton";
     NextGameBtn.innerText = "Next Question";
     NextGameBtn.onclick = NextGame;
     ResultBoard.append(NextGameBtn);
@@ -320,6 +321,7 @@ function RenderResults() {
 /* The NextGame() function slowly removes the resultboard with the help of the removeFadeOut() function, 
 then decides which question to render next based on which the previous one was. */
 function NextGame() {
+    document.getElementById("nxtbutton").disabled = true;
     CorrectAnswer = false;
     removeFadeOut(document.getElementById("resultboard"), 1000);
     setTimeout(function(){
