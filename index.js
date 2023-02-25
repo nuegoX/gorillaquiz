@@ -382,7 +382,7 @@ function RenderFinalStats() {
     setTimeout(function(){
         const FinalResultBoard = document.getElementById("finalresults");
         const WinnerTitle = document.createElement("p");
-        if (p1points > p1points) {
+        if (p1points > p2points) {
             WinnerTitle.innerText = User1Name;
         }
         else if (p1points === p2points) {
