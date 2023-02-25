@@ -135,13 +135,16 @@ and then renders the first question on the screen with the RenderCard() function
 function Game() {
     PlayMusic();
     const Nav = document.getElementById("nav");
+    const App = document.getElementById("app");
 
+    
     const NavP1 = document.createElement("p");
     NavP1.innerText = User1Name;
     NavP1.id = "navp1";
 
     const NavVS = document.createElement("strong");
-    NavVS.innerText = " V.S ";
+    NavVS.id = "navscoreboard";
+    NavVS.innerText = p1points + " - " + p2points;
 
     const NavP2 = document.createElement("p");
     NavP2.innerText = User2Name;
@@ -290,6 +293,9 @@ function GuessingComplete() {
 When you press the "Next Question" button, the NextGame() function will execute. */
 function RenderResults() {
     const App = document.getElementById("app");
+    const NavScoreBoard = document.getElementById("navscoreboard");
+    NavScoreBoard.innerText = p1points + " - " + p2points;
+
 
     // Creating resultboard
     let ResultBoard = document.createElement("div");
