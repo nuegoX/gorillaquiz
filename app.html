@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="app.css">
+    <title>GORILLA QUIZ</title>
+</head>
+<body>
+    <nav id="nav">
+        <p>Gorilla Quiz</p>
+    </nav>
+
+    <div id="app">
+
+        <div class="log-in-form" id="form1">
+            <span id="result1"></span>
+            <p id="u1" style="font-size: xx-large; font-family: 'Courier New', Courier, monospace;">Username:</p>
+
+            <input id="username1" maxlength="13" oninput="Username1()" class="name-input" type="text" min="0">
+            <div id="button1div">
+                <button onclick="Button1()" class="loginbtn">Set</button>
+            </div>
+        </div>
+
+        <div class="log-in-form" id="form2">
+            <span id="result2"></span>
+
+            <p id="u2" style="font-size: xx-large; font-family: 'Courier New', Courier, monospace;">Username:</p>
+
+            <input id="username2" maxlength="14" oninput="Username2()" class="name-input" type="text" min="0">
+            <div id="button2div">
+                <button onclick="Button2()" class="loginbtn">Set</button>
+            </div>
+        </div>
+
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
