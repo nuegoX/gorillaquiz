@@ -78,7 +78,7 @@ nav > strong {
     width: 170px;
     height: 30px;
     border-radius: 10px;
-    border:2px solid rgb(0, 140, 255);
+    border: 2px solid rgb(0, 140, 255);
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
     font-size: large;
@@ -220,7 +220,7 @@ span {
         margin-top: 10px;
         width: 40vw;
     }
-
+    
 
 }
 @media (max-width: 770px) {

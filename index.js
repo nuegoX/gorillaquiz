@@ -97,7 +97,7 @@ function Username2() {
 
 // Function for starting the background music.
 function PlayMusic() {
-    const BackgroundMusic = new Audio("kahoot.mp3");
+    BackgroundMusic = new Audio("kahoot.mp3");
     BackgroundMusic.play();
 }
 // Function for button click sound effect.
@@ -117,6 +117,9 @@ function removeFadeOut( el, speed ) {
     }, speed);
 }
 
+// Declaration for the music variable.
+var BackgroundMusic;
+
 // Declaring variables for the two players as well as a counter for which question you're on and the correct answer.
 let CorrectAnswer;
 let CurrentGame = 1;
@@ -135,9 +138,7 @@ and then renders the first question on the screen with the RenderCard() function
 function Game() {
     PlayMusic();
     const Nav = document.getElementById("nav");
-    const App = document.getElementById("app");
 
-    
     const NavP1 = document.createElement("p");
     NavP1.innerText = User1Name;
     NavP1.id = "navp1";
@@ -157,13 +158,13 @@ function Game() {
     removeFadeOut(document.getElementById("form2"), 1000);
 
     setTimeout(function(){
-        CorrectAnswer = true;
-        RenderCard("Can gorillas be dangerous to humans?");
+        RenderCard("Can gorillas be dangerous to humans?", true);
     }, 1500);
 }
 
 /* The RenderCard() function renders a question with the passed in text. */
-function RenderCard(question) {
+function RenderCard(question, questionAnswer) {
+    CorrectAnswer = questionAnswer;
     document.getElementById("navp1").style.fontWeight = "bold";
     // Root path
     const App = document.getElementById("app");
@@ -264,9 +265,7 @@ for that question with the RenderResults() function. */
 function GuessingComplete() {
     document.getElementById("ButtonOne").disabled = true;
     document.getElementById("ButtonTwo").disabled = true;
-    setTimeout(function(){
-        document.getElementById("reponse").innerText = "";
-    }, 1000);
+
     setTimeout(function(){
         if (p1guess == CorrectAnswer) {
             console.log(User1Name + " has guessed the correct answer");
@@ -286,7 +285,7 @@ function GuessingComplete() {
         console.log(User2Name + " has " + p2points);
         removeFadeOut(card, 1000);
         setTimeout(RenderResults, 1500);
-    }, 2000);
+    }, 700);
 }
 
 /* This function renders the result board that displays what the correct answer was as well as how many points each player now has in total.
@@ -330,44 +329,36 @@ function NextGame() {
     var NextGameBtn = document.getElementById("nxtbutton");
     NextGameBtn.disabled = true;
 
-    CorrectAnswer = false;
     removeFadeOut(document.getElementById("resultboard"), 1000);
     setTimeout(function(){
        switch (CurrentGame) {
         case 1:
-            CorrectAnswer = true;
             CurrentGame++;
-            RenderCard("Can gorillas weight over 200kg?");
+            RenderCard("Can gorillas weight over 200kg?", true);
             break;
         case 2:
-            CorrectAnswer = false;
             CurrentGame++;
-            RenderCard("Are gorillas anti-social animals?");
+            RenderCard("Are gorillas anti-social animals?", false);
             break;
         case 3:
-            CorrectAnswer = true;
             CurrentGame++;
-            RenderCard("Are there only two species of gorilla?")
+            RenderCard("Are there only two species of gorilla?", true);
             break;
         case 4:
-            CorrectAnswer = true;
             CurrentGame++;
-            RenderCard("Are the adult males known as silverbacks?");
+            RenderCard("Are the adult males known as silverbacks?", true);
             break;
         case 5:
-            CorrectAnswer = true;
             CurrentGame++;
-            RenderCard("Have gorillas ever been recorded making and using tools?");
+            RenderCard("Have gorillas ever been recorded making and using tools?", true);
             break;
         case 6:
-            CorrectAnswer = false;
             CurrentGame++;
-            RenderCard("Are gorillas able to live for more than 100 years?");
+            RenderCard("Are gorillas able to live for more than 100 years?", false);
             break;
         case 7:
-            CorrectAnswer = false;
             CurrentGame++;
-            RenderCard("Do gorillas have longer legs than arms?");
+            RenderCard("Do gorillas have longer legs than arms?", false);
             break;
         default:
             RenderFinalStats();
@@ -378,6 +369,12 @@ function NextGame() {
 /* This is the last function which executes when all questions are answered. It renders a board that shows who the winner was, or if it
 was a tie. */
 function RenderFinalStats() {
+
+    // Pauses the background music.
+    BackgroundMusic.pause();
+    // Plays the victory sound!
+    new Audio("victory.mp3").play();
+
     const App = document.getElementById("app");
     const FinalResultBoard = document.createElement("div");
     FinalResultBoard.id = "finalresults";
